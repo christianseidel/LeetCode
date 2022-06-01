@@ -10,9 +10,6 @@ public class RomanToInteger {
 
         for (int i = 0; i < s.length(); i++) {
 
-            // in case the next to last and last letter form a union (e.g. "XL")
-            // the last letter is to be ignored (counter will be increased by 2).
-
                 switch (s.charAt(i)) {
                     case 'I':
                         if (i + 1 != s.length()) {
@@ -43,7 +40,10 @@ public class RomanToInteger {
                         break;
                 }
                 solution = solution + addition;
-                int firstDigitOfAddition = Integer.parseInt(Integer.toString(addition).substring(0, 1));
+
+            // In case the next to last and last letter form a union (e.g. "XL" equals "40", "XC" equals "90")
+            // the last letter is to be ignored (counter will be increased by 2).
+            int firstDigitOfAddition = Integer.parseInt(Integer.toString(addition).substring(0, 1));
                 if ((firstDigitOfAddition == 4) || (firstDigitOfAddition == 9)) {
                     i++;
                 };
